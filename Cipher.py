@@ -23,11 +23,7 @@ def vigenere (input, keyword):
     while i <len(input):
         for letter in input:
             if letter in abc:
-                #print (i)
-                #print (letter)
                 ciphered = ciphered + caesar(letter, round((abc.index(keyword[i%len(keyword)])/2)))
-                ##print ((abc.index(keyword[i%len(keyword)])/2))
-                #print (ciphered)
             else:
                 ciphered = ciphered + letter
             i = i+1
