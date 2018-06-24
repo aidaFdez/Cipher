@@ -9,7 +9,7 @@ ciph = "Here will be the output"
 def caesar ():
     result = Toplevel()
     input = toCip.get()
-    num = (caesarN.get())
+    num = int(caesarN.get())
     ciphered = ""
     for letter in input:
         if letter in abc:
@@ -64,8 +64,8 @@ vigKey.grid(row = 3, column = 1)
 #res = tk.Label(window, text = ciph)
 #res.grid(row = 5, column = 0)
 
-Button(window, text = "Caesar", command = caesar()).grid(row = 7)
-Button(window, text = "Vigenere", command = vigenere()).grid(row = 7, column = 1)
+Button(window, text = "Caesar", command = caesar).grid(row = 7)
+Button(window, text = "Vigenere", command = vigenere).grid(row = 7, column = 1)
 
 
 
