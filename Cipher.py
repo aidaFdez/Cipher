@@ -28,3 +28,11 @@ def vigenere (input, keyword):
                 ciphered = ciphered + letter
             i = i+1
     return ciphered
+
+window = tk.Tk()
+
+mPrinc = tk.Message(window, text = "Hi! Fill in the necessary data and then choose the kind of ciphering you want!")
+mPrinc.config(font = ('times', 12), width = 1000)
+mPrinc.pack()
+
+window.mainloop()
