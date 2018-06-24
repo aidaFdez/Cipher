@@ -30,9 +30,27 @@ def vigenere (input, keyword):
     return ciphered
 
 window = tk.Tk()
+window.geometry("500x200")
 
-mPrinc = tk.Message(window, text = "Hi! Fill in the necessary data and then choose the kind of ciphering you want!")
-mPrinc.config(font = ('times', 12), width = 1000)
-mPrinc.pack()
+mPrinc = tk.Message(window, text = "Hi! Fill in the necessary data and then choose the kind of ciphering you want! \n")
+mPrinc.config(width = 200)
+mPrinc.grid()
+
+msg = tk.Message(window, text = "Text to cipher ")
+msg.config(width = 100)
+msg.grid()
+toCip = tk.Entry(window)
+toCip.grid(sticky = "w", row = 1, column = 1)
+
+msgC = tk.Message(window, text = "Number (only Caesar) ")
+msgC.grid(row = 2, column = 0)
+caesarN = tk.Entry(window)
+caesarN.grid(row = 2, column = 1)
+
+msgV = tk.Message(window, text = "Key (only Vigenere) ")
+msgV.grid(row = 3)
+vigKey = tk.Entry(window)
+vigKey.grid(row = 3, column = 1)
+
 
 window.mainloop()
