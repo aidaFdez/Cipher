@@ -8,6 +8,7 @@ ciph = "Here will be the output"
 #Uses the Caesar cipher. It shifts the letters the times given.
 def caesar ():
     result = Toplevel()
+    result.title("Caesar")
     input = toCip.get()
     num = int(caesarN.get())
     ciphered = ""
@@ -20,10 +21,22 @@ def caesar ():
     output = Label(result, text = ciphered)
     output.grid()
 
+#The same function as Caesar but taking arguments, so it can be called from Vigenere
+def caeHelp(input, num):
+    ciphered = ""
+    for letter in input:
+        if letter in abc:
+            ind = abc.index(letter)
+            ciphered = ciphered + abc[(ind+(num*2) )%52]
+        else:
+            ciphered = ciphered + letter
+    return ciphered
+
 #Uses the Vigènere cipher. It uses a square table, which in essence is just applying Caesar a different number of times
 #depending on the letter of the keyword being used at the moment.
 def vigenere ():
     result = Toplevel()
+    result.title("Vigenere")
     input = toCip.get()
     keyword = vigKey.get()
     ciphered = ""
@@ -31,7 +44,7 @@ def vigenere ():
     while i <len(input):
         for letter in input:
             if letter in abc:
-                ciphered = ciphered + caesar(letter, round((abc.index(keyword[i%len(keyword)])/2)))
+                ciphered = ciphered + caeHelp(letter, round((abc.index(keyword[i%len(keyword)])/2)))
             else:
                 ciphered = ciphered + letter
             i = i+1
@@ -39,31 +52,34 @@ def vigenere ():
     output.grid()
 
 window = Tk()
+window.title("Cipher")
 window.geometry("500x300")
 
+#Introductory message.
 mPrinc = Message(window, text = "Hi! Fill in the necessary data and then choose the kind of ciphering you want! \n")
 mPrinc.config(width = 200)
 mPrinc.grid()
 
+#Text to be ciphered
 msg = Message(window, text = "Text to cipher ")
 msg.config(width = 100)
 msg.grid(sticky = "w")
 toCip = Entry(window)
 toCip.grid(sticky = "w", row = 1, column = 1)
 
+#Necessary inputs for Caesar
 msgC = Message(window, text = "Number (only Caesar) ")
 msgC.grid(sticky = "w", row = 2, column = 0)
 caesarN = Entry(window)
 caesarN.grid(row = 2, column = 1)
 
+#Necessary inputs for Vigenere
 msgV = Message(window, text = "Key (only Vigenere) ")
 msgV.grid(row = 3, sticky = "w")
 vigKey = Entry(window)
 vigKey.grid(row = 3, column = 1)
 
-#res = tk.Label(window, text = ciph)
-#res.grid(row = 5, column = 0)
-
+#Buttons for getting the ciphered text.
 Button(window, text = "Caesar", command = caesar).grid(row = 7)
 Button(window, text = "Vigenere", command = vigenere).grid(row = 7, column = 1)
 
