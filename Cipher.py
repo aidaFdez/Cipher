@@ -5,6 +5,10 @@ abc = ['a','A','b','B','c','C','d','D','e','E','f','F','g','G','h','H','i','I','
     'x','X','y', 'Y','z', 'Z']
 ciph = "Here will be the output"
 
+    ###########################
+    # Functions for ciphering #
+    ###########################
+
 #Uses the Caesar cipher. It shifts the letters the times given.
 def caesar ():
     result = Toplevel()
@@ -51,6 +55,31 @@ def vigenere ():
     output = Label(result, text = ciphered)
     output.grid()
 
+#Uses the frquencies of letters in English. Depending on it, it gaves it a number. This uses Lewand's ordering.
+def frequency():
+    result = Toplevel()
+    result.title("By frequency")
+    input = toCip.get()
+    #Order of the alphabet from most frequent to least frequent
+    
+    abcFreq = ['e','t','a','o','i','n','s','h','r','d','l','c','u','m','w','f','g','y','p','b','v','k','j','x','q','z'
+               'E','T','A','O','I','N','S','H','R','D','L','C','U','M','W','F','G','Y','P','B','V','K','J','X','Q','Z']
+    ciphered = ""
+    for letter in input:
+        if letter in abcFreq:
+            ciphered = ciphered + str((abcFreq.index(letter) %26)+1 + " "
+        else:
+            ciphered = ciphered + letter
+    output = Label(result, text = ciphered)
+    output.grid()
+
+
+
+
+    ############################
+    # Settings for the display #
+    ############################
+
 window = Tk()
 window.title("Cipher")
 window.geometry("500x300")
@@ -82,6 +111,7 @@ vigKey.grid(row = 3, column = 1)
 #Buttons for getting the ciphered text.
 Button(window, text = "Caesar", command = caesar).grid(row = 7)
 Button(window, text = "Vigenere", command = vigenere).grid(row = 7, column = 1)
+Button(window, text = "Frequency", command = frequency).grid(row = 7, column = 2)
 
 
 
