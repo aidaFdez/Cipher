@@ -61,18 +61,27 @@ def frequency():
     result.title("By frequency")
     input = toCip.get()
     #Order of the alphabet from most frequent to least frequent
-    
+
     abcFreq = ['e','t','a','o','i','n','s','h','r','d','l','c','u','m','w','f','g','y','p','b','v','k','j','x','q','z'
                'E','T','A','O','I','N','S','H','R','D','L','C','U','M','W','F','G','Y','P','B','V','K','J','X','Q','Z']
     ciphered = ""
     for letter in input:
         if letter in abcFreq:
-            ciphered = ciphered + str((abcFreq.index(letter) %26)+1 + " "
+            ciphered = ciphered + str((abcFreq.index(letter) %26)+1 + " ")
         else:
             ciphered = ciphered + letter
     output = Label(result, text = ciphered)
     output.grid()
 
+
+#Uses the polialphabetical ordering. There are three alphabets (there could be more) and alternates them
+def polialphabetical():
+    result = Toplevel()
+    result.title("Polialphabetical")
+    input = toCip.get()
+    ciphered = ""
+    output = Label(result, text = ciphered)
+    output.grid()
 
 
 
@@ -105,13 +114,20 @@ caesarN.grid(row = 2, column = 1)
 #Necessary inputs for Vigenere
 msgV = Message(window, text = "Key (only Vigenere) ")
 msgV.grid(row = 3, sticky = "w")
-vigKey = Entry(window)
+vigKey = Entry(window) 
 vigKey.grid(row = 3, column = 1)
+
+#Necessary inputs for polialphabetical
+msgP = Message(window, text = "Order of alphabets (Polialphabetical only)")
+msgP.grid(row = 4, sticky = "w")
+order = Entry(window)
+order.grid(row = 4, column = 1)
 
 #Buttons for getting the ciphered text.
 Button(window, text = "Caesar", command = caesar).grid(row = 7)
 Button(window, text = "Vigenere", command = vigenere).grid(row = 7, column = 1)
 Button(window, text = "Frequency", command = frequency).grid(row = 7, column = 2)
+Button(window, text = "Polialphabetical", command = polialphabetical).grid(row = 8, column = 1)
 
 
 
