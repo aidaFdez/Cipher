@@ -36,7 +36,7 @@ def caeHelp(input, num):
             ciphered = ciphered + letter
     return ciphered
 
-#Uses the Vigènere cipher. It uses a square table, which in essence is just applying Caesar a different number of times
+#Uses the Vigenere cipher. It uses a square table, which in essence is just applying Caesar a different number of times
 #depending on the letter of the keyword being used at the moment.
 def vigenere ():
     result = Toplevel()
@@ -114,7 +114,7 @@ caesarN.grid(row = 2, column = 1)
 #Necessary inputs for Vigenere
 msgV = Message(window, text = "Key (only Vigenere) ")
 msgV.grid(row = 3, sticky = "w")
-vigKey = Entry(window) 
+vigKey = Entry(window)
 vigKey.grid(row = 3, column = 1)
 
 #Necessary inputs for polialphabetical
