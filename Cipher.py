@@ -55,7 +55,7 @@ def vigenere ():
     output = Label(result, text = ciphered)
     output.grid()
 
-#Uses the frquencies of letters in English. Depending on it, it gaves it a number. This uses Lewand's ordering.
+#Uses the frquencies of letters in English. Depending on it, it gives it a number. This uses Lewand's ordering.
 def frequency():
     result = Toplevel()
     result.title("By frequency")
